@@ -1,0 +1,37 @@
+using System;
+
+namespace ConsoleApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> cards = new List<string> {
+                "Hjärter två", "Hjärter tre", "Hjärter fyra", "Hjärter fem", "Hjärter sex", "Hjärter sju", "Hjärter åtta", "Hjärter nio", "Hjärter tio", "Hjärter Knekt", "Hjärter Dam", "Hjärter Kung", "Hjärter Ess",
+                "Klöver två", "Klöver tre", "Klöver fyra", "Klöver fem", "Klöver sex", "Klöver sju", "Klöver åtta", "Klöver nio", "Klöver tio", "Klöver Knekt", "Klöver Dam", "Klöver Kung", "Klöver Ess",
+                "Spader två", "Spader tre", "Spader fyra", "Spader fem", "Spader sex", "Spader sju", "Spader åtta", "Spader nio", "Spader tio", "Spader Knekt", "Spader Dam", "Spader Kung", "Spader Ess",
+                "Ruter två", "Ruter tre", "Ruter fyra", "Ruter fem", "Ruter sex", "Ruter sju", "Ruter åtta", "Ruter nio", "Ruter tio", "Ruter Knekt", "Ruter Dam", "Ruter Kung", "Ruter Ess"
+            };
+            int counter = 0;
+
+            while (cards.Count > 0)
+            {
+                int randomIndex = new Random().Next(cards.Count);
+                string card = cards[randomIndex];
+
+                Console.Write("Gissa kort: ");
+                string guess = Console.ReadLine();
+
+                if (string.Equals(guess, card, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Rätt! Kortet var " + card);
+                    Console.WriteLine("Grattis, det tog dig " + counter + " försök!");
+                    break;
+                }
+                Console.WriteLine(card);
+                counter++;
+                cards.RemoveAt(randomIndex);
+            }
+        }
+    }
+}
